@@ -27,8 +27,16 @@
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
+            :root {
+                --primary: #FF597B;
+                --secondary: #FF8E9E;
+                --tertiary: #F9B5D0;
+                --background: #EEEEEE;
+            }
+
             body {
                 font-family: 'Inter', sans-serif;
+                background-color: var(--background);
             }
 
             h1, h2, h3, h4, h5, h6 {
@@ -36,9 +44,9 @@
             }
 
             #message-container {
-                background-color: oklch(78.33% 0.108 326.54);
-                box-shadow: 0 0 15px rgba(0, 0, 0, 0.455);
-                
+                background-color: var(--tertiary);
+                box-shadow: 0 0 15px var(--secondary);
+                border-radius: 15px;
                 transition: height 1.5s ease-in-out;
             }
         </style>
@@ -54,7 +62,7 @@
             </div>
 
             <div class="heart-container" class="mt-2">
-                <i id="solid-heart" class="fa-solid fa-heart fa-beat fa-2x" style="color: #ff0000;"></i>
+                <i id="solid-heart" class="fa-solid fa-fan fa-beat fa-2x" style="color: var(--primary);"></i>
             </div>
         </div>
     </body>
