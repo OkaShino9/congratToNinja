@@ -329,6 +329,31 @@
                 background: transparent;
                 height: 80px !important;
             }
+
+            @media screen and (max-width: 1024px) {  /* เพิ่มขนาดหน้าจอให้ครอบคลุมทั้งมือถือและแท็บเล็ต */
+                .music-player {
+                    display: none !important;  /* บังคับให้ซ่อนด้วย !important */
+                }
+
+                .message {
+                    margin-bottom: 40px;
+                }
+
+                .container {
+                    padding-bottom: 60px;
+                }
+
+                .confetti-container {
+                    bottom: 0;  /* ปรับตำแหน่งกระดาษเนื่องจากไม่มี player */
+                }
+            }
+
+            /* ยกเลิก styles เดิมของ music player สำหรับมือถือ */
+            @media (max-width: 768px) {
+                .music-player {
+                    display: none !important;
+                }
+            }
         </style>
 
         <script>
