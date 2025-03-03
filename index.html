@@ -130,17 +130,48 @@
             @media (max-width: 480px) {
                 .polaroid {
                     left: 2%;
-                    bottom: 15%;
+                    bottom: 25%;
                     width: clamp(80px, 10vw, 120px);
                 }
                 .polaroid-top-right {
                     right: 2%;
-                    top: 15%;
+                    top: 25%;
                     width: clamp(80px, 10vw, 120px);
                 }
                 .polaroid::after,
                 .polaroid-top-right::after {
                     font-size: 0.7em;
+                }
+            }
+
+            @media (max-width: 480px) and (orientation: portrait) {
+                .polaroid {
+                    left: 0%;
+                    bottom: 30%;
+                    width: 80px;
+                }
+                .polaroid-top-right {
+                    right: 0%;
+                    top: 30%;
+                    width: 80px;
+                }
+                .polaroid::after,
+                .polaroid-top-right::after {
+                    font-size: 0.6em;
+                    margin-top: 4px;
+                }
+            }
+
+            @media (max-width: 480px) and (orientation: landscape) {
+                .polaroid {
+                    left: 2%;
+                    bottom: 15%;
+                    width: 100px;
+                }
+                .polaroid-top-right {
+                    right: 2%;
+                    top: 15%;
+                    width: 100px;
                 }
             }
 
