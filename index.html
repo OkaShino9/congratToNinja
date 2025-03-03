@@ -84,6 +84,35 @@
                 position: relative;
                 z-index: 1;
             }
+
+            .polaroid {
+                position: fixed;
+                bottom: 20px;
+                left: 20px;
+                background: white;
+                padding: 10px 10px 20px 10px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+                transform: rotate(-45deg);
+                z-index: 2;
+                width: 200px;
+                border: 1px solid #f0f0f0;
+                transition: opacity 1s ease-in-out;
+            }
+
+            .polaroid img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+
+            .polaroid::after {
+                content: "Congratulations!";
+                text-align: center;
+                display: block;
+                font-size: 0.9em;
+                margin-top: 8px;
+                color: #666;
+            }
         </style>
 
         <script>
@@ -112,6 +141,17 @@
                     }
                 }());
             }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                const heart = document.querySelector("#solid-heart");
+                const polaroid = document.querySelector(".polaroid");
+                
+                heart.addEventListener("click", function() {
+                    setTimeout(() => {
+                        polaroid.classList.remove("hidden");
+                    }, 1000);
+                });
+            });
         </script>
 
         <script src="js/script.js"></script>
@@ -122,6 +162,10 @@
                 <div class="w-[90%] mb-auto mt-auto">
                     <article id="message" class="prose"></article>
                 </div>
+            </div>
+
+            <div class="polaroid hidden">
+                <img src="congratulation-flower.jpg" alt="Congratulation flowers">
             </div>
 
             <div class="heart-container" class="mt-2">
