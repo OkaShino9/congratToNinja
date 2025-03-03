@@ -51,6 +51,9 @@
                 transition: height 1.5s ease-in-out;
                 position: relative;
                 overflow: hidden;
+                max-width: 85vw !important;
+                transform-origin: center;
+                margin: 0 auto;
             }
 
             #message-container::before {
@@ -142,53 +145,70 @@
                 overflow-y: auto;
                 position: relative;
                 padding: 2rem 0;
+                max-width: 100vw;
+                overflow-x: hidden;
             }
 
             @media (max-width: 768px) {
+                #message-container {
+                    transform: scale(0.8);
+                }
                 .polaroid {
-                    left: 5%;
-                    bottom: 5%;
-                    width: 150px;
+                    left: 2%;
+                    bottom: 15%;
+                    width: 120px;
+                    transform: rotate(-25deg) scale(0.8);
                 }
                 .polaroid-top-right {
-                    right: 5%;
-                    top: 5%;
-                    width: 150px;
+                    right: 2%;
+                    top: 15%;
+                    width: 120px;
+                    transform: rotate(25deg) scale(0.8);
+                }
+                #confetti-container {
+                    bottom: 12%;
+                    height: 100px;
+                    transform: scale(0.8);
                 }
             }
 
             @media (max-width: 480px) {
+                #message-container {
+                    transform: scale(0.65);
+                }
                 .polaroid {
-                    left: 2%;
-                    bottom: 5%;
-                    width: 120px;
+                    transform: rotate(-25deg) scale(0.6);
                 }
                 .polaroid-top-right {
-                    right: 2%;
-                    top: 5%;
-                    width: 120px;
+                    transform: rotate(25deg) scale(0.6);
                 }
-                .polaroid::after,
-                .polaroid-top-right::after {
-                    font-size: 0.8em;
+                #confetti-container {
+                    transform: scale(0.65);
+                    bottom: 15%;
                 }
             }
 
             @media (max-width: 480px) and (orientation: portrait) {
+                .flex.justify-center.items-center.flex-col {
+                    padding: 4rem 0;
+                }
+                #message-container {
+                    transform: scale(0.55);
+                }
                 .polaroid {
                     left: 0%;
-                    bottom: 30%;
-                    width: 80px;
+                    bottom: 20%;
+                    transform: rotate(-25deg) scale(0.5);
                 }
                 .polaroid-top-right {
                     right: 0%;
-                    top: 30%;
-                    width: 80px;
+                    top: 20%;
+                    transform: rotate(25deg) scale(0.5);
                 }
-                .polaroid::after,
-                .polaroid-top-right::after {
-                    font-size: 0.6em;
-                    margin-top: 4px;
+                #confetti-container {
+                    transform: scale(0.55);
+                    bottom: 18%;
+                    height: 120px;
                 }
             }
 
@@ -204,11 +224,44 @@
                     width: 100px;
                 }
             }
+
+            #confetti-container {
+                position: absolute;
+                bottom: 5%;
+                left: 0;
+                width: 100%;
+                height: 80px;
+                overflow: hidden;
+                pointer-events: none;
+                z-index: 1;
+            }
+
+            .confetti-piece {
+                position: absolute;
+                bottom: 0;
+                background-color: var(--primary);
+                width: 10px;
+                height: 10px;
+                opacity: 0.9;
+                transform-origin: center;
+                transition: all 0.5s ease-out;
+                border-radius: 2px;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            }
+
+            @media (max-width: 768px) {
+                #confetti-container {
+                    bottom: 8%;
+                }
+            }
         </style>
 
         <script>
             function throwConfetti() {
                 const colors = ['#FF597B', '#FF8E9E', '#F9B5D0'];
+                const container = document.getElementById('confetti-container');
+                
+                // พลุกระดาษแบบเดิม
                 const end = Date.now() + 1000;
                 
                 (function frame() {
@@ -217,20 +270,66 @@
                         angle: 60,
                         spread: 55,
                         origin: { x: 0 },
-                        colors: colors
+                        colors: colors,
+                        gravity: 2,
+                        drift: 0
                     });
                     confetti({
                         particleCount: 3,
                         angle: 120,
                         spread: 55,
                         origin: { x: 1 },
-                        colors: colors
+                        colors: colors,
+                        gravity: 2,
+                        drift: 0
                     });
                 
                     if (Date.now() < end) {
                         requestAnimationFrame(frame);
                     }
                 }());
+
+                // สร้างเศษกระดาษที่จะกองอยู่ด้านล่าง
+                setTimeout(() => {
+                    for(let i = 0; i < 100; i++) {
+                        const piece = document.createElement('div');
+                        piece.className = 'confetti-piece';
+                        piece.style.left = 15 + Math.random() * 70 + '%';
+                        piece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                        piece.style.transform = `rotate(${Math.random() * 360}deg) scale(${0.8 + Math.random() * 0.4})`;
+                        piece.style.width = `${6 + Math.random() * 8}px`;
+                        piece.style.height = `${6 + Math.random() * 8}px`;
+                        piece.style.bottom = `${Math.random() * 60}px`;
+                        container.appendChild(piece);
+
+                        // ปรับการกระจายตัวให้เหมือนในคอม
+                        if (window.innerWidth <= 480) {
+                            piece.style.left = 10 + Math.random() * 80 + '%';
+                            piece.style.bottom = `${Math.random() * 100}px`;
+                        }
+                    }
+                }, 1000);
+
+                // เพิ่มเศษกระดาษรอบที่สอง
+                setTimeout(() => {
+                    for(let i = 0; i < 50; i++) {
+                        const piece = document.createElement('div');
+                        piece.className = 'confetti-piece';
+                        piece.style.left = 15 + Math.random() * 70 + '%';
+                        piece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                        piece.style.transform = `rotate(${Math.random() * 360}deg) scale(${0.6 + Math.random() * 0.3})`;
+                        piece.style.width = `${4 + Math.random() * 6}px`;
+                        piece.style.height = `${4 + Math.random() * 6}px`;
+                        piece.style.bottom = `${Math.random() * 20}px`;
+                        container.appendChild(piece);
+
+                        // ปรับการกระจายตัวให้เหมือนในคอม
+                        if (window.innerWidth <= 480) {
+                            piece.style.left = 10 + Math.random() * 80 + '%';
+                            piece.style.bottom = `${Math.random() * 40}px`;
+                        }
+                    }
+                }, 1500);
             }
 
             document.addEventListener('DOMContentLoaded', function() {
@@ -256,6 +355,8 @@
                     <article id="message" class="prose"></article>
                 </div>
             </div>
+
+            <div id="confetti-container"></div>
 
             <div class="polaroid hidden">
                 <img src="c8de7a0a-de32-495a-a04f-dc1deab67e3b.jpeg" alt="Congratulation flowers">
