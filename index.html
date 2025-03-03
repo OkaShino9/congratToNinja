@@ -118,6 +118,29 @@
                 .polaroid {
                     left: 5%;
                     bottom: 5%;
+                    width: clamp(100px, 12vw, 150px);
+                }
+                .polaroid-top-right {
+                    right: 5%;
+                    top: 5%;
+                    width: clamp(100px, 12vw, 150px);
+                }
+            }
+
+            @media (max-width: 480px) {
+                .polaroid {
+                    left: 2%;
+                    bottom: 15%;
+                    width: clamp(80px, 10vw, 120px);
+                }
+                .polaroid-top-right {
+                    right: 2%;
+                    top: 15%;
+                    width: clamp(80px, 10vw, 120px);
+                }
+                .polaroid::after,
+                .polaroid-top-right::after {
+                    font-size: 0.7em;
                 }
             }
 
@@ -142,13 +165,6 @@
                 font-size: clamp(0.7em, 1.2vw, 0.9em);
                 margin-top: 8px;
                 color: #666;
-            }
-
-            @media (max-width: 768px) {
-                .polaroid-top-right {
-                    right: 5%;
-                    top: 5%;
-                }
             }
         </style>
 
