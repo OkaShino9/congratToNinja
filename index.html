@@ -87,8 +87,8 @@
 
             .polaroid {
                 position: fixed;
-                bottom: 20%;
-                left: 15%;
+                bottom: 5%;
+                left: 5%;
                 background: white;
                 padding: 10px 10px 20px 10px;
                 box-shadow: 0 4px 8px rgba(0,0,0,0.2);
@@ -116,16 +116,55 @@
 
             @media (max-width: 768px) {
                 .polaroid {
-                    left: 5%;
-                    bottom: 20%;
+                    left: 3%;
+                    bottom: 3%;
                     width: 150px;
                 }
             }
 
             @media (max-width: 480px) {
                 .polaroid {
-                    left: 2%;
-                    bottom: 10%;
+                    left: 1%;
+                    bottom: 2%;
+                    width: 120px;
+                }
+            }
+
+            .polaroid-top-right {
+                position: fixed;
+                top: 5%;
+                right: 5%;
+                background: white;
+                padding: 10px 10px 20px 10px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+                transform: rotate(45deg);
+                z-index: 2;
+                width: 180px;
+                border: 1px solid #f0f0f0;
+                transition: opacity 1s ease-in-out;
+            }
+
+            .polaroid-top-right::after {
+                content: "Congratulations!";
+                text-align: center;
+                display: block;
+                font-size: 0.9em;
+                margin-top: 8px;
+                color: #666;
+            }
+
+            @media (max-width: 768px) {
+                .polaroid-top-right {
+                    right: 3%;
+                    top: 3%;
+                    width: 150px;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .polaroid-top-right {
+                    right: 1%;
+                    top: 2%;
                     width: 120px;
                 }
             }
@@ -161,10 +200,12 @@
             document.addEventListener('DOMContentLoaded', function() {
                 const heart = document.querySelector("#solid-heart");
                 const polaroid = document.querySelector(".polaroid");
+                const polaroidTopRight = document.querySelector(".polaroid-top-right");
                 
                 heart.addEventListener("click", function() {
                     setTimeout(() => {
                         polaroid.classList.remove("hidden");
+                        polaroidTopRight.classList.remove("hidden");
                     }, 1000);
                 });
             });
@@ -182,6 +223,10 @@
 
             <div class="polaroid hidden">
                 <img src="c8de7a0a-de32-495a-a04f-dc1deab67e3b.jpeg" alt="Congratulation flowers">
+            </div>
+
+            <div class="polaroid-top-right hidden">
+                <img src="/Users/kevster/programming/congratToNinja/319846787_677209640612614_8809402171211736010_n.jpg" alt="Congratulation flowers">
             </div>
 
             <div class="heart-container" class="mt-2">
