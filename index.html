@@ -166,10 +166,13 @@
                     transform: scale(0.8);
                 }
                 .music-player {
-                    width: 280px;
+                    width: 85%;
                     height: 60px;
                     padding: 8px 15px;
                     bottom: 20px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    margin: 0 auto;
                 }
                 .music-info {
                     font-size: 14px;
@@ -184,6 +187,10 @@
                 }
                 .progress-bar {
                     margin: 8px 0;
+                }
+                .message {
+                    width: 85%;
+                    margin-bottom: 100px;
                 }
             }
 
@@ -277,7 +284,7 @@
 
             @media (max-width: 768px) {
                 #confetti-container {
-                    bottom: 8%;
+                    bottom: -20px;
                 }
             }
 
