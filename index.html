@@ -94,7 +94,7 @@
                 box-shadow: 0 4px 8px rgba(0,0,0,0.2);
                 transform: rotate(-25deg);
                 z-index: 2;
-                width: 180px;
+                width: clamp(120px, 15vw, 180px);
                 border: 1px solid #f0f0f0;
                 transition: opacity 1s ease-in-out;
             }
@@ -109,24 +109,15 @@
                 content: "Congratulations!";
                 text-align: center;
                 display: block;
-                font-size: 0.9em;
+                font-size: clamp(0.7em, 1.2vw, 0.9em);
                 margin-top: 8px;
                 color: #666;
             }
 
             @media (max-width: 768px) {
                 .polaroid {
-                    left: 3%;
-                    bottom: 3%;
-                    width: 150px;
-                }
-            }
-
-            @media (max-width: 480px) {
-                .polaroid {
-                    left: 1%;
-                    bottom: 2%;
-                    width: 120px;
+                    left: 5%;
+                    bottom: 5%;
                 }
             }
 
@@ -139,7 +130,7 @@
                 box-shadow: 0 4px 8px rgba(0,0,0,0.2);
                 transform: rotate(25deg);
                 z-index: 2;
-                width: 180px;
+                width: clamp(120px, 15vw, 180px);
                 border: 1px solid #f0f0f0;
                 transition: opacity 1s ease-in-out;
             }
@@ -148,24 +139,15 @@
                 content: "Congratulations!";
                 text-align: center;
                 display: block;
-                font-size: 0.9em;
+                font-size: clamp(0.7em, 1.2vw, 0.9em);
                 margin-top: 8px;
                 color: #666;
             }
 
             @media (max-width: 768px) {
                 .polaroid-top-right {
-                    right: 3%;
-                    top: 3%;
-                    width: 150px;
-                }
-            }
-
-            @media (max-width: 480px) {
-                .polaroid-top-right {
-                    right: 1%;
-                    top: 2%;
-                    width: 120px;
+                    right: 5%;
+                    top: 5%;
                 }
             }
         </style>
