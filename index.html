@@ -86,7 +86,7 @@
             }
 
             .polaroid {
-                position: fixed;
+                position: absolute;
                 bottom: 5%;
                 left: 5%;
                 background: white;
@@ -94,7 +94,7 @@
                 box-shadow: 0 4px 8px rgba(0,0,0,0.2);
                 transform: rotate(-25deg);
                 z-index: 2;
-                width: clamp(120px, 15vw, 180px);
+                width: 180px;
                 border: 1px solid #f0f0f0;
                 transition: opacity 1s ease-in-out;
             }
@@ -114,33 +114,63 @@
                 color: #666;
             }
 
+            .polaroid-top-right {
+                position: absolute;
+                top: 5%;
+                right: 5%;
+                background: white;
+                padding: 10px 10px 20px 10px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+                transform: rotate(25deg);
+                z-index: 2;
+                width: 180px;
+                border: 1px solid #f0f0f0;
+                transition: opacity 1s ease-in-out;
+            }
+
+            .polaroid-top-right::after {
+                content: "Congratulations!";
+                text-align: center;
+                display: block;
+                font-size: clamp(0.7em, 1.2vw, 0.9em);
+                margin-top: 8px;
+                color: #666;
+            }
+
+            .flex.justify-center.items-center.flex-col {
+                min-height: 100vh;
+                overflow-y: auto;
+                position: relative;
+                padding: 2rem 0;
+            }
+
             @media (max-width: 768px) {
                 .polaroid {
                     left: 5%;
                     bottom: 5%;
-                    width: clamp(100px, 12vw, 150px);
+                    width: 150px;
                 }
                 .polaroid-top-right {
                     right: 5%;
                     top: 5%;
-                    width: clamp(100px, 12vw, 150px);
+                    width: 150px;
                 }
             }
 
             @media (max-width: 480px) {
                 .polaroid {
                     left: 2%;
-                    bottom: 25%;
-                    width: clamp(80px, 10vw, 120px);
+                    bottom: 5%;
+                    width: 120px;
                 }
                 .polaroid-top-right {
                     right: 2%;
-                    top: 25%;
-                    width: clamp(80px, 10vw, 120px);
+                    top: 5%;
+                    width: 120px;
                 }
                 .polaroid::after,
                 .polaroid-top-right::after {
-                    font-size: 0.7em;
+                    font-size: 0.8em;
                 }
             }
 
@@ -173,29 +203,6 @@
                     top: 15%;
                     width: 100px;
                 }
-            }
-
-            .polaroid-top-right {
-                position: fixed;
-                top: 5%;
-                right: 5%;
-                background: white;
-                padding: 10px 10px 20px 10px;
-                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-                transform: rotate(25deg);
-                z-index: 2;
-                width: clamp(120px, 15vw, 180px);
-                border: 1px solid #f0f0f0;
-                transition: opacity 1s ease-in-out;
-            }
-
-            .polaroid-top-right::after {
-                content: "Congratulations!";
-                text-align: center;
-                display: block;
-                font-size: clamp(0.7em, 1.2vw, 0.9em);
-                margin-top: 8px;
-                color: #666;
             }
         </style>
 
