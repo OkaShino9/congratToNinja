@@ -184,7 +184,8 @@
                 }
                 #confetti-container {
                     transform: scale(0.65);
-                    bottom: 25%;
+                    bottom: 45%;
+                    height: 60px;
                 }
             }
 
@@ -207,8 +208,8 @@
                 }
                 #confetti-container {
                     transform: scale(0.55);
-                    bottom: 35%;
-                    height: 120px;
+                    bottom: 55%;
+                    height: 50px;
                 }
             }
 
@@ -305,7 +306,7 @@
                         // ปรับการกระจายตัวให้เหมือนในคอม
                         if (window.innerWidth <= 480) {
                             piece.style.left = 10 + Math.random() * 80 + '%';
-                            piece.style.bottom = `${Math.random() * 80}px`;
+                            piece.style.bottom = `${Math.random() * 40}px`;
                         }
                     }
                 }, 1000);
@@ -326,7 +327,7 @@
                         // ปรับการกระจายตัวให้เหมือนในคอม
                         if (window.innerWidth <= 480) {
                             piece.style.left = 10 + Math.random() * 80 + '%';
-                            piece.style.bottom = `${Math.random() * 30}px`;
+                            piece.style.bottom = `${Math.random() * 20}px`;
                         }
                     }
                 }, 1500);
