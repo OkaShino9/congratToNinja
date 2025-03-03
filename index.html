@@ -176,8 +176,11 @@
                 }
                 #confetti-container {
                     transform: scale(0.65);
-                    bottom: 45%;
+                    bottom: 5%;
                     height: 60px;
+                    width: 160vw;
+                    left: -30%;
+                    z-index: 2;
                 }
             }
 
@@ -199,8 +202,8 @@
                     transform: rotate(25deg) scale(0.5);
                 }
                 #confetti-container {
-                    transform: scale(0.55);
-                    bottom: 55%;
+                    transform: scale(0.4);
+                    bottom: 8%;
                     height: 50px;
                 }
             }
@@ -220,10 +223,10 @@
 
             #confetti-container {
                 position: absolute;
-                bottom: 5%;
+                bottom: 2%;
                 left: 0;
                 width: 100%;
-                height: 80px;
+                height: 50px;
                 overflow: hidden;
                 pointer-events: none;
                 z-index: 1;
@@ -246,6 +249,66 @@
                 #confetti-container {
                     bottom: 8%;
                 }
+            }
+
+            .music-player-container {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                margin-top: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .music-player {
+                position: relative;
+                width: 350px;
+                z-index: 3;
+                transition: opacity 0.5s ease-in-out;
+                margin: 0 auto;
+                display: block;
+                max-width: 350px;
+            }
+
+            .music-player.hidden {
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            @media (max-width: 480px) {
+                .music-player {
+                    max-width: 280px;
+                }
+                .player-custom {
+                    padding: 10px;
+                }
+            }
+
+            @media (max-width: 480px) and (orientation: portrait) {
+                .music-player {
+                    transform: scale(0.8);
+                }
+                .music-player-container {
+                    margin-top: 0.5rem;
+                    margin-bottom: 0.5rem;
+                }
+            }
+
+            /* Custom Spotify Player Theme */
+            .player-custom {
+                padding: 12px;
+                background: linear-gradient(135deg, var(--primary), var(--secondary));
+                border-radius: 24px;
+                box-shadow: 0 4px 15px rgba(255, 89, 123, 0.3);
+                width: 100%;
+                display: block;
+                border: 3px solid var(--tertiary);
+                background-color: var(--tertiary);
+            }
+
+            .player-custom iframe {
+                border: none;
+                background: transparent;
+                height: 80px !important;
             }
         </style>
 
@@ -329,11 +392,13 @@
                 const heart = document.querySelector("#solid-heart");
                 const polaroid = document.querySelector(".polaroid");
                 const polaroidTopRight = document.querySelector(".polaroid-top-right");
+                const musicPlayer = document.querySelector(".music-player");
                 
                 heart.addEventListener("click", function() {
                     setTimeout(() => {
                         polaroid.classList.remove("hidden");
                         polaroidTopRight.classList.remove("hidden");
+                        musicPlayer.classList.remove("hidden");
                     }, 1000);
                 });
             });
@@ -346,6 +411,21 @@
             <div id="message-container" class="flex-col items-center hidden h-0 overflow-y-hidden max-h-[80vh] max-w-[50vw] max-md:max-w-[70vw] max-sm:max-w-[80vw] max-sm:max-h-[80vh] py-5">
                 <div class="w-[90%] mb-auto mt-auto">
                     <article id="message" class="prose"></article>
+                </div>
+            </div>
+
+            <div class="music-player-container relative w-full">
+                <div class="music-player hidden">
+                    <div class="player-custom">
+                        <iframe style="border-radius:12px;" 
+                            src="https://open.spotify.com/embed/track/1dGr1c8CrMLDpV6mPbImSI?utm_source=generator&theme=0" 
+                            height="152" 
+                            frameBorder="0" 
+                            allowfullscreen="" 
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
                 </div>
             </div>
 
