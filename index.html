@@ -87,14 +87,14 @@
 
             .polaroid {
                 position: fixed;
-                bottom: 20px;
-                left: 20px;
+                bottom: 20%;
+                left: 15%;
                 background: white;
                 padding: 10px 10px 20px 10px;
                 box-shadow: 0 4px 8px rgba(0,0,0,0.2);
                 transform: rotate(-45deg);
                 z-index: 2;
-                width: 200px;
+                width: 180px;
                 border: 1px solid #f0f0f0;
                 transition: opacity 1s ease-in-out;
             }
@@ -112,6 +112,22 @@
                 font-size: 0.9em;
                 margin-top: 8px;
                 color: #666;
+            }
+
+            @media (max-width: 768px) {
+                .polaroid {
+                    left: 5%;
+                    bottom: 20%;
+                    width: 150px;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .polaroid {
+                    left: 2%;
+                    bottom: 10%;
+                    width: 120px;
+                }
             }
         </style>
 
@@ -165,7 +181,7 @@
             </div>
 
             <div class="polaroid hidden">
-                <img src="congratulation-flower.jpg" alt="Congratulation flowers">
+                <img src="c8de7a0a-de32-495a-a04f-dc1deab67e3b.jpeg" alt="Congratulation flowers">
             </div>
 
             <div class="heart-container" class="mt-2">
