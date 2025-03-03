@@ -50,6 +50,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         tempdata.did_open = true;
         
+        // เรียกใช้เอฟเฟกต์คอนเฟตติ
+        throwConfetti();
+        
         msg_container.classList.remove("hidden");
         msg_container.classList.add("flex");
         

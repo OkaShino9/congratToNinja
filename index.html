@@ -23,6 +23,7 @@
 
         <script src="https://cdn.tailwindcss.com"></script>
         <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
@@ -84,6 +85,34 @@
                 z-index: 1;
             }
         </style>
+
+        <script>
+            function throwConfetti() {
+                const colors = ['#FF597B', '#FF8E9E', '#F9B5D0'];
+                const end = Date.now() + 1000;
+                
+                (function frame() {
+                    confetti({
+                        particleCount: 3,
+                        angle: 60,
+                        spread: 55,
+                        origin: { x: 0 },
+                        colors: colors
+                    });
+                    confetti({
+                        particleCount: 3,
+                        angle: 120,
+                        spread: 55,
+                        origin: { x: 1 },
+                        colors: colors
+                    });
+                
+                    if (Date.now() < end) {
+                        requestAnimationFrame(frame);
+                    }
+                }());
+            }
+        </script>
 
         <script src="js/script.js"></script>
     </head>
